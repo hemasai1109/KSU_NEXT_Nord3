@@ -51,7 +51,7 @@ jobs:
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v1.0.5
           elif [ "${{ matrix.ksu }}" == "KernelSU-Next" ]; then
-            curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s next-susfs-a13-5.15-dev
+            curl -LSs "https://raw.githubusercontent.com/hemasai1109/Custom_kernel_OnePlus_Nord3/refs/heads/main/.github/workflows/ksun.sh" | bash -s next-susfs-a13-5.15-dev
           elif [ "${{ matrix.ksu }}" == "SukiSU-Ultra" ]; then
             curl -LSs "https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU-Ultra/main/kernel/setup.sh" | bash -s susfs-main
           fi
