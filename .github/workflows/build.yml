@@ -97,7 +97,11 @@ jobs:
 
       - name: Apply SUSFS Patches
         run: |
-          cd kernel_workspace/kernel-5.10
+          ls
+          cd kernel_workspace
+          ls
+          cd kernel-5.10
+          ls
           cp ../susfs4ksu/kernel_patches/fs/* fs
           cp ../susfs4ksu/kernel_patches/include/linux/* include/linux
           patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
