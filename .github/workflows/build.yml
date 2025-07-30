@@ -79,7 +79,7 @@ jobs:
 
       - name: Add ${{ matrix.ksu }}
         run: |
-          cd kernel_workspace/kernel-5.10
+          cd kernel_workspace
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v1.0.5
           elif [ "${{ matrix.ksu }}" == "KernelSU-Next" ]; then
@@ -90,6 +90,7 @@ jobs:
 
       - name: Checkout SUSFS
         run: |
+          cd kernel_workspace
           git clone https://gitlab.com/simonpunk/susfs4ksu -b gki-android12-5.10
 
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
@@ -99,11 +100,11 @@ jobs:
 
       - name: Apply SUSFS Patches
         run: |
-          ls
+          cd kernel_workspace
           
-          cp /susfs4ksu/kernel_patches/fs/* fs
-          cp /susfs4ksu/kernel_patches/include/linux/* include/linux
-          patch -p1 < /susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
+          cp susfs4ksu/kernel_patches/fs/* fs
+          cp susfs4ksu/kernel_patches/include/linux/* include/linux
+          patch -p1 < susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
 
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             cd KernelSU
