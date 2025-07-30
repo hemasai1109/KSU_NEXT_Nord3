@@ -20,9 +20,9 @@ jobs:
     strategy:
       matrix:
         ksu:
-          - KernelSU
+          
           - KernelSU-Next
-          - SukiSU-Ultra
+          
 
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
 
       - name: Checkout SUSFS
         run: |
-          git clone https://gitlab.com/simonpunk/susfs4ksu -b gki-android13-5.15
+          git clone https://gitlab.com/simonpunk/susfs4ksu -b gki-android12-5.10
 
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             cd susfs4ksu
