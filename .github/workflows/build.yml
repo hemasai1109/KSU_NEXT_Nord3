@@ -100,8 +100,11 @@ jobs:
       - name: Apply SUSFS Patches
         run: |
           ls
-          
+          echo "dusfs4ksu below"
           cd susfs4ksu
+          ls
+          echo "kernel patches bekow 🥲"
+          cd kernel_patches
           ls
           cp ../susfs4ksu/kernel_patches/fs/* fs
           cp ../susfs4ksu/kernel_patches/include/linux/* include/linux
