@@ -11,6 +11,11 @@ on:
         required: true
         default: false
         type: boolean
+      FILE:
+        type: string
+        description: "Configuration file"
+        required: true
+        default: manifest_stock
 
 jobs:
   build:
@@ -36,7 +41,7 @@ jobs:
       - name: Initialize and Sync Kernel Source
         run: |
           mkdir kernel_workspace && cd kernel_workspace
-          repo init -u https://github.com/hemasai1109/Custom_kernel_OnePlus_Nord3/blob/main/manifest_stock.xml --depth=1
+          repo init -u https://github.com/hemasai1109/Custom_kernel_OnePlus_Nord3.git -m ${{ github.event.inputs.FILE }}.xml --depth=1
           repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
           ls
 
