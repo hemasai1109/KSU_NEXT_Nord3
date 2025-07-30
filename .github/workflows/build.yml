@@ -47,7 +47,7 @@ jobs:
 
       - name: Add ${{ matrix.ksu }}
         run: |
-          cd kernel-5.10
+          cd kernel_workspace/kernel-5.10
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v1.0.5
           elif [ "${{ matrix.ksu }}" == "KernelSU-Next" ]; then
@@ -67,10 +67,10 @@ jobs:
 
       - name: Apply SUSFS Patches
         run: |
-          cd sm7550
+          cd kernel_workspace/kernel-5.10
           cp ../susfs4ksu/kernel_patches/fs/* fs
           cp ../susfs4ksu/kernel_patches/include/linux/* include/linux
-          patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android13-5.15.patch
+          patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
 
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             cd KernelSU
@@ -79,7 +79,7 @@ jobs:
 
       - name: Add Configuration
         run: |
-          cat << EOF >> sm7550/arch/arm64/configs/gki_defconfig
+          cat << EOF >> kernel-5.10/arch/arm64/configs/gki_defconfig
           # KernelSU and SUSFS Config
           CONFIG_KSU=y
           CONFIG_KSU_SUSFS=y
