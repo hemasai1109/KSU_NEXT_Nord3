@@ -113,7 +113,7 @@ jobs:
 
       - name: Add Configuration
         run: |
-          cat << EOF >> kernel-5.10/arch/arm64/configs/gki_defconfig
+          cat << EOF >> kernel_workspace/kernel-5.10/arch/arm64/configs/gki_defconfig
           # KernelSU and SUSFS Config
           CONFIG_KSU=y
           CONFIG_KSU_SUSFS=y
@@ -152,18 +152,19 @@ jobs:
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
             echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=n" >> sm7550/arch/arm64/configs/gki_defconfig
           elif [ "${{ matrix.ksu }}" == "KernelSU-Next" ]; then
-            echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> sm7550/arch/arm64/configs/gki_defconfig
+            echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> kernel_workspace/kernel-5.10/arch/arm64/configs/gki_defconfig
           elif [ "${{ matrix.ksu }}" == "SukiSU-Ultra" ]; then
             echo "CONFIG_KPM=y" >> sm7550/arch/arm64/configs/gki_defconfig
             echo "CONFIG_KSU_SUSFS_HAS_MAGIC_MOUNT=y" >> sm7550/arch/arm64/configs/gki_defconfig
           fi
 
-          # Remove check_defconfig
-          sed -i 's|check_defconfig||g' sm7550/build.config.gki
+          # Remove check_defconfi
+          ls
+          sed -i 's|check_defconfig||g' kernel_workspace/kernel-5.10/build.config.gki
 
       - name: Set Kernel Name
         run: |
-          cd sm7550
+          cd kernel_workspace/kernel-5.10
           sed -i '$s|$res|-EclipseKernel|g' scripts/setlocalversion
           sed -i 's| -dirty||g' scripts/setlocalversion
 
