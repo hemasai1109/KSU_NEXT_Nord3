@@ -99,7 +99,8 @@ jobs:
         run: |
           ls
           cd kernel_workspace
-          
+          cd susfs4ksu/kernel_patches
+          ls
           cp ../susfs4ksu/kernel_patches/fs/* fs
           cp ../susfs4ksu/kernel_patches/include/linux/* include/linux
           patch -p1 < ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android12-5.10.patch
