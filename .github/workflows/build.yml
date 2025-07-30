@@ -100,7 +100,7 @@ jobs:
       - name: Apply SUSFS Patches
         run: |
           ls
-          cd kernel_workspace
+          
           cd susfs4ksu
           ls
           cp ../susfs4ksu/kernel_patches/fs/* fs
