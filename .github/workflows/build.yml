@@ -90,7 +90,7 @@ jobs:
 
       - name: Checkout SUSFS
         run: |
-          cd kernel_workspace
+          cd kernel_workspace/kernel-5.10
           git clone https://gitlab.com/simonpunk/susfs4ksu -b gki-android12-5.10
 
           if [ "${{ matrix.ksu }}" == "KernelSU" ]; then
@@ -100,7 +100,7 @@ jobs:
 
       - name: Apply SUSFS Patches
         run: |
-          cd kernel_workspace
+          cd kernel_workspace/kernel-5.10
           
           cp susfs4ksu/kernel_patches/fs/* fs
           cp susfs4ksu/kernel_patches/include/linux/* include/linux
