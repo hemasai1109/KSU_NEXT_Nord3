@@ -170,7 +170,7 @@ jobs:
 
       - name: Build Kernel
         run: |
-          LTO=thin BUILD_CONFIG=sm7550/build.config.gki.aarch64 build/build.sh || exit 1
+          LTO=thin BUILD_CONFIG=kernel_workspace/kernel-5.10/build.config.gki.aarch64 build/build.sh || exit 1
           mkdir artifacts && cd artifacts
           cp ../out/*/dist/boot.img EclipseKernel_${{ matrix.ksu }}.img
 
