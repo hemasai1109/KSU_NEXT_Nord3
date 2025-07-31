@@ -534,7 +534,7 @@ jobs:
           ls
           sed -i 's|check_defconfig||g' kernel_workspace/kernel-5.10/build.config.gki
 
-            - name: Custom BUILD_TIME
+      - name: Custom BUILD_TIME
         if: ${{ github.event.inputs.BUILD_TIME != '' && !contains('Ff', github.event.inputs.BUILD_TIME) }}
         shell: bash
         run: |
@@ -542,16 +542,16 @@ jobs:
           echo "KBUILD_BUILD_TIMESTAMP=${DATESTR}" >> "$GITHUB_ENV"
           echo "KBUILD_BUILD_VERSION=1" >> "$GITHUB_ENV"
           cd kernel_workspace/kernel_platform/
-          for f in common/scripts/mkcompile_h msm-kernel/scripts/mkcompile_h; do
-            if [ -f "$f" ]; then
-              echo "Patching mkcompile_h with BUILD_TIME=$DATESTR"
-              if grep -q 'UTS_VERSION=' "$f"; then
-                perl -pi -e "s{UTS_VERSION=\"\\\$\\(.*?\\)\"}{UTS_VERSION=\"#1 SMP PREEMPT $DATESTR\"}" "$f"
-              else
-                perl -0777 -pi -e "s{cat <<EOF}{cat <<EOF\n#undef UTS_VERSION\n#define UTS_VERSION \"#1 SMP PREEMPT $DATESTR\" } unless /UTS_VERSION/" "$f"
+            for f in common/scripts/mkcompile_h msm-kernel/scripts/mkcompile_h; do
+              if [ -f "$f" ]; then
+                echo "Patching mkcompile_h with BUILD_TIME=$DATESTR"
+                if grep -q 'UTS_VERSION=' "$f"; then
+                  perl -pi -e "s{UTS_VERSION=\"\\\$\\(.*?\\)\"}{UTS_VERSION=\"#1 SMP PREEMPT $DATESTR\"}" "$f"
+                else
+                  perl -0777 -pi -e "s{cat <<EOF}{cat <<EOF\n#undef UTS_VERSION\n#define UTS_VERSION \"#1 SMP PREEMPT $DATESTR\" } unless /UTS_VERSION/" "$f"
+                fi
               fi
-            fi
-          done
+              done
       
       - name: Build Kernel FAST
         if: ${{ github.event.inputs.FAST_BUILD == 'true' }}
