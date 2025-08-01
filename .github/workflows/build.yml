@@ -529,6 +529,7 @@ jobs:
           echo "KSUVER=$KSU_VERSION" >> $GITHUB_ENV
           echo "KernelSU Next Version: $KSU_VERSION"
           echo "SusFS Version: $susfs_version"
+          cd ..
           cd susfs4ksu
           echo "Susfs4ksu under things👍"
           case "$susfs_version" in
