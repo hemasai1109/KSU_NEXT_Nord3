@@ -727,7 +727,7 @@ jobs:
       - name: Upload AnyKernel3_STOCK
         uses: actions/upload-artifact@v4
         with:
-          name: Magic_Kernel_${{ steps.file_clean.outputs.value }}${{ steps.suffix.outputs.value }}_DareDevil
+          name: Nebula_Kernel_${{ steps.file_clean.outputs.value }}${{ steps.suffix.outputs.value }}_DareDevil
           path: ./Anykernel3_STOCK_NORD3/*
 
       - name: Post-build Disk Check
@@ -754,7 +754,7 @@ jobs:
           echo "release=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
           cat << EOF > release_notes.md
 
-          Magic Kernel for OnePlus Nord 3 / Ace 2V (Vitamin)
+          Nebula Kernel for OnePlus Nord 3 / Ace 2V (Vitamin)
 
           Features:
           -> KernelSU-Next
