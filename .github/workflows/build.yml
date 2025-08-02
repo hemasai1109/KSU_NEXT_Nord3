@@ -30,7 +30,7 @@ on:
         type: string
         description: "Custom kernel suffix (leave empty for a random string)"
         required: false
-        default: "DareDevil⚡"
+        default: "DareDevil🪄"
       FAST_BUILD:
         type: boolean
         description: "Enable fast build?"
@@ -49,7 +49,7 @@ on:
         type: string
         description: "Branch name/Custom version identifier"
         required: false
-        default: "susfs-main/DareDevil⚡"
+        default: "susfs-main/DareDevil🪄"
      
 
 jobs:
@@ -727,7 +727,7 @@ jobs:
       - name: Upload AnyKernel3_STOCK
         uses: actions/upload-artifact@v4
         with:
-          name: AnyKernel3_Stock_${{ steps.file_clean.outputs.value }}${{ steps.suffix.outputs.value }}_DareDevil⚡
+          name: Magic_Kernel_${{ steps.file_clean.outputs.value }}${{ steps.suffix.outputs.value }}_DareDevil
           path: ./Anykernel3_STOCK_NORD3/*
 
       - name: Post-build Disk Check
@@ -754,34 +754,26 @@ jobs:
           echo "release=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
           cat << EOF > release_notes.md
 
-          Eclipse Kernel for Motorola Edge 50 Pro (eqe)
+          Magic Kernel for OnePlus Nord 3 / Ace 2V (Vitamin)
 
           Features:
-          -> KernelSU
           -> KernelSU-Next
-          -> SukiSU-Ultra
           -> SUSFS
-          -> BBR Support
 
           Links:
-          -> [KernelSU](https://github.com/tiann/KernelSU)
           -> [KernelSU-Next](https://github.com/KernelSU-Next/KernelSU-Next)
-          -> [SukiSU-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra)
           -> [Kernel Flasher](https://github.com/fatalcoder524/KernelFlasher)
           -> [SUSFS Module](https://github.com/sidex15/susfs4ksu-module)
-          -> [TCP Optimiser Module](https://github.com/fatalcoder524/TCP_Optimiser_Module)
 
           Notes:
-          -> KernelSU is built on stable release for KSU drivers and SUSFS
-          -> KernelSU-Next and SukiSU-Ultra are built on main branch
+          -> KernelSU-Next is built on main branch
           -> Flash SUSFS Module and make sure SUS SU is enabled
-          -> Flash TCP Optimiser Module and leave at default settings
           EOF
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Eclipse Kernel
+          name: Magic Kernel
           tag_name: ${{ env.release }}
           body_path: release_notes.md
 
