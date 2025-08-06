@@ -714,7 +714,7 @@ jobs:
      
       - name: Make AnyKernel3_STOCK
         run: |
-          git clone https://github.com/darklord4567/Anykernel3_STOCK_NORD3.git --depth=1
+          git clone https://github.com/hemasai1109/KSU_NEXT_Nord3.git --depth=1
           echo "Copying Image.gz to Anykernel3_STOCK_NORD3/"
           cp kernel_workspace/out/android12-5.10/kernel-5.10/arch/arm64/boot/Image.gz Anykernel3_STOCK_NORD3/Image.gz
 
@@ -773,7 +773,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Magic Kernel
+          name: Nebula Kernel
           tag_name: ${{ env.release }}
           body_path: release_notes.md
 
