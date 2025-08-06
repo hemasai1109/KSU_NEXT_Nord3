@@ -716,7 +716,7 @@ jobs:
         run: |
           git clone https://github.com/hemasai1109/KSU_NEXT_Nord3.git --depth=1
           echo "Copying Image.gz to Anykernel3_STOCK_NORD3/"
-          cp kernel_workspace/out/android12-5.10/kernel-5.10/arch/arm64/boot/Image.gz Anykernel3_STOCK_NORD3/Image.gz
+          cp kernel_workspace/out/android12-5.10/kernel-5.10/arch/arm64/boot/Image.gz KSU_NEXT_Nord3/Image.gz
 
 
       - name: Set zip Suffix
@@ -728,7 +728,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Nebula_Kernel_${{ steps.file_clean.outputs.value }}${{ steps.suffix.outputs.value }}_DareDevil
-          path: ./Anykernel3_STOCK_NORD3/*
+          path: ./KSU_NEXT_Nord3/*
 
       - name: Post-build Disk Check
         run: df -h
