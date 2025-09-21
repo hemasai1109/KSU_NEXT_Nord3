@@ -474,7 +474,7 @@ jobs:
           cd "kernel_workspace/kernel-5.10"
           
           echo "Adding KernelSU..."
-          curl -LSs "https://raw.githubusercontent.com/hemasai1109/Custom_kernel_OnePlus_Nord3/refs/heads/main/.github/workflows/ksun.sh" | bash -s next
+          curl -LSs "https://raw.githubusercontent.com/hemasai1109/KSU_NEXT_Nord3/refs/heads/main/ksun.sh" | bash -s next
           
           git submodule update --init --recursive
           cd KernelSU-Next/kernel
